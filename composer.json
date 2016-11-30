@@ -1,0 +1,33 @@
+{
+    "name": "dbakl/dbakl-connection",
+    "type": "library",
+    "description": "dbakl Connection",
+    "keywords": ["DbAkl", "framework"],
+    "homepage": "https://getgismo.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthias Leuffen",
+            "email": "matthes@leuffen.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "dbakl/dbakl-core": "*",
+        "dbakl/dbakl-fsql": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "DbAkl\\Con\\": "/src/Con/"
+        },
+        "exclude-from-classmap": [
+            "/test/"
+        ]
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
