@@ -41,24 +41,25 @@
 
         }
 
-
         public function count() {
 
         }
 
-
-
         public function cast(\stdClass $object) {
 
         }
-
-
 
         public function error (callable $fn) {
 
         }
 
 
+        /**
+         * Returns Result Object to be directly passed
+         * to output
+         */
+        public function result () {
 
+        }
 
     }

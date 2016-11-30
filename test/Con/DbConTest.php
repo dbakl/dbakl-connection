@@ -25,16 +25,12 @@
             $c = $this->getDbCon();
 
             // Load the Entity by Primary key
-            $c->load("SomeTable", "00000-00000-00000-00000");
+            $arrayData = $c->load("SomeTable", "00000-00000-00000-00000");
 
             // Load the Entity by Keys
-            $c->load("SomeTable", ["someProperty" => "Eqals", "otherProperty" => "Equals"]);
+            $arrayData = $c->load("SomeTable", ["someProperty" => "Eqals", "otherProperty" => "Equals"]);
 
-            $c->load("SomeTable", [["someProperty", "eq", "someValue"], "@orderBy" => "someProp", "@orderRev"]);
-
-            $arrayData = $c->load("SomeTable", []);
-
-            $objectData = $c->load(DbAklTestEntity::class, []);
+            $objectData = $c->load(DbAklTestEntity::class, ["SomeCondition"]);
 
             $c->load ($obj = new DbAklTestEntity(), ["condition" => "condition"]);
         }
@@ -81,11 +77,20 @@
         }
 
 
+        public function testScan () {
+            $c = $this->getDbCon();
+
+            $c->scan("TableName", ["@@orderBy" => "", "@@limit" =>""]);
+
+        }
+
+
         public function testSelect() {
             $c = $this->getDbCon();
 
             $c->select();
 
+            $name = "SomeName";
             $c->select(["SELECT * FROM Somewhere WHERE a=:name AND ", "name" => $name]);
 
             $c->query (new Sql());
@@ -96,6 +101,7 @@
 
             $c->select(fsql()->from("TableName"));
 
+            $name = "SomeName";
             $c->select(["SELECT * FROM Somewhere WHERE a=:name AND ", "name" => $name]);
 
             $c->query (new Sql());
